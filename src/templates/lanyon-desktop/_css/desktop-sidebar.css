@@ -1,0 +1,104 @@
+/*
+ * Desktop Sidebar Modifications for Lanyon
+ * 
+ * This CSS overrides the default Lanyon behavior to:
+ * - Show permanent sidebar on tablets and desktops (768px+)
+ * - Hide hamburger menu on larger screens
+ * - Adjust content layout to account for sidebar width
+ * - Keep mobile hamburger behavior on smaller screens
+ */
+
+/* 
+ * Tablet and Desktop: Show permanent sidebar
+ * Using 768px breakpoint (typical tablet portrait width)
+ */
+@media (min-width: 768px) {
+  /* Make sidebar always visible and positioned */
+  .sidebar {
+    visibility: visible !important;
+    left: 0 !important;
+    transform: none !important;
+    -webkit-transform: none !important;
+    -ms-transform: none !important;
+  }
+  
+  /* Hide the hamburger toggle on larger screens */
+  .sidebar-toggle {
+    display: none !important;
+  }
+  
+  /* Adjust main content to account for sidebar width */
+  .wrap {
+    margin-left: 14rem !important;
+    transform: none !important;
+    -webkit-transform: none !important;
+    -ms-transform: none !important;
+  }
+  
+  /* Adjust container positioning and width */
+  .container {
+    max-width: 42rem;
+    margin-left: 1rem !important; /* Override auto centering */
+    margin-right: auto;
+    padding-left: 1rem; /* Add some padding from sidebar */
+  }
+  
+  /* Ensure main content area doesn't have extra margins */
+  .content {
+    margin-left: 0;
+  }
+}
+
+/* 
+ * Large Desktop: Even more content space
+ */
+@media (min-width: 1200px) {
+  .container {
+    max-width: 48rem;
+  }
+}
+
+/* 
+ * Extra Large Desktop: Maximum content width
+ */
+@media (min-width: 1600px) {
+  .container {
+    max-width: 56rem;
+  }
+}
+
+/*
+ * Mobile: Keep original hamburger behavior
+ * No changes needed - original Lanyon CSS handles this
+ */
+@media (max-width: 767px) {
+  /* Ensure mobile behavior is preserved */
+  .sidebar {
+    left: -14rem;
+    visibility: hidden;
+  }
+  
+  .sidebar-toggle {
+    display: block;
+  }
+  
+  .wrap {
+    margin-left: 0;
+  }
+  
+  /* Keep mobile-friendly container width */
+  .container {
+    max-width: 28rem;
+  }
+}
+
+/*
+ * Smooth transitions for responsive breakpoints
+ */
+.wrap {
+  transition: margin-left 0.3s ease-in-out;
+}
+
+.container {
+  transition: max-width 0.3s ease-in-out;
+}
